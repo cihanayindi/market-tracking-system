@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #555555; z-index: 1050;">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-white" href="/">HARCAMA PANELİ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color: white;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Navbar Sol Taraf -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold" href="/ornek">ÖRNEK</a>
+                </li>                
+            </ul>
+            <!-- Navbar Sağ Taraf -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-danger btn-sm" href="/logout">Çıkış Yap</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Navbar genel tasarımı */
+    .navbar {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        border-bottom: 2px solid #444;
+    }
+
+    .navbar:hover {
+        background-color: #444444; /* Hover durumunda daha koyu renk */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Hafif bir gölge efekti */
+    }
+
+    /* Navbar bağlantıları */
+    .nav-link {
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff; /* Bağlantı rengini belirginleştir */
+    }
+
+    /* Navbar logosu */
+    .navbar-brand {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Çıkış yap düğmesi */
+    .btn-danger {
+        border-radius: 30px;
+        padding: 5px 20px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #b22222; /* Daha koyu kırmızı */
+        transform: scale(1.05); /* Hafif büyüme efekti */
+    }
+
+    /* Toggler simgesi */
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%288, 8, 8, 0.5%29' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+</style>
