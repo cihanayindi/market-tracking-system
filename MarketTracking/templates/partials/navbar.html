@@ -1,15 +1,18 @@
 <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #555555; z-index: 1050;">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold text-white" href="/">HARCAMA PANELİ</a>
+        {% load static %}
+        <a class="navbar-brand fw-bold text-white" href="/">
+            <img src="{% static 'images/favicon.png' %}" alt="Harcama Paneli" style="width: 32px; height: 32px;">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="color: white;"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Navbar Sol Taraf -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link text-white fw-semibold" href="/ornek">ÖRNEK</a>
-                </li>                
+                </li>                 {% endcomment %}
             </ul>
             <!-- Navbar Sağ Taraf -->
             <ul class="navbar-nav">
