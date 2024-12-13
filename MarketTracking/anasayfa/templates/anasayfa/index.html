@@ -3,10 +3,14 @@
 {% block title %}Anasayfa{% endblock title %}
 
 {% block content %}
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="text-center">
-        <a href="{% url 'fis_ekle' %}" class="btn btn-success btn-lg mx-3">Fiş Ekle</a>
-        <a href="/harcamalari-goruntule" class="btn btn-success btn-lg mx-3">Harcamaları Görüntüle</a>
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+    <div class="d-flex justify-content-center w-100 mb-3">
+        <a href="{% url 'fis_ekle' %}" class="btn btn-success btn-lg mx-3 w-25">Fiş Ekle</a>
+        <a href="/harcamalari_goruntule" class="btn btn-success btn-lg mx-3 w-25">Harcamaları Görüntüle</a>
+        <a href="/urunleri_goruntule" class="btn btn-success btn-lg mx-3 w-25">Ürünleri Görüntüle</a>
+    </div>
+    <div class="d-flex justify-content-center w-100">
+        <a href="/islemleri_goruntule" class="btn btn-success btn-lg mx-3 w-50">Tamamlanmamış İşlemleri Görüntüle</a>
     </div>
 </div>
 <style>
@@ -20,6 +24,14 @@
     .btn-success:hover {
         background-color: #28a745; /* Daha koyu bir yeşil */
         transform: scale(1.05); /* Hafif büyüme efekti */
+    }
+
+    .w-25 {
+        width: 25%;
+    }
+
+    .w-50 {
+        width: 50%;
     }
 </style>
 
