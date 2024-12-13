@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Fiş Ekle{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Fiş Fotoğrafı Yükle</h2>
+    <form method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded bg-light">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-success btn-lg w-100">Yükle</button>
+    </form>
+</div>
+
+<style>
+    /* Genel Sayfa Tasarımı */
+    .container {
+        max-width: 600px; /* Formu sınırlı bir alanda tutar */
+        margin-top: 50px;
+    }
+
+    /* Başlık Tasarımı */
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* Formun gölgelendirilmesi ve kenarlık */
+    form {
+        background-color: #f8f9fa; /* Arka planı açık gri */
+        border-radius: 10px; /* Yuvarlak köşeler */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    }
+
+    /* Form Alanları */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+        padding: 15px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    }
+
+    /* Submit Butonu */
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        padding: 15px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+        transform: scale(1.05);
+    }
+
+    .btn-success:focus, .btn-success:active {
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+    }
+</style>
+
+{% endblock content %}
