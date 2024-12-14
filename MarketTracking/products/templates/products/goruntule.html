@@ -5,5 +5,98 @@
 {% endblock title %}
 
 {% block content %}
-URUNLERI GORUNTULE
+<style>
+    /* Genel Stil */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    /* Tablo Stili */
+    table {
+        width: 100%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Sıralanabilir Sütun Stili */
+    th {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s;
+    }
+
+    th:hover {
+        background-color: #0056b3;
+    }
+
+    th a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .sort-icon {
+        font-size: 12px;
+        margin-left: 5px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+    }
+
+    th:hover .sort-icon {
+        opacity: 1;
+    }
+
+
+    tr:hover {
+        background-color: #e0e0e0; /* Daha koyu bir gri ton */
+    }
+    
+    /* Tıklanabilir Satırlar */
+    /* tbody tr {
+        cursor: pointer;
+    } */
+</style>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Tipi</th>
+            <th>Fiyatı</th>
+            <th>Satış Birimi</th>
+            <th>Eklenme Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in product_list %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.get_type_display }}</td>  <!-- Türkçe 'type' etiketi -->
+            <td>{{ product.price }}</td>
+            <td>{{ product.get_unit_type_display }}</td>  <!-- Türkçe 'unit_type' etiketi -->
+            <td>{{ product.uploaded_at|date:"d-m-y H:i"}}</td>
+        </tr>
+        {% empty %}
+            <tr>
+                <td colspan="7">Ürün bulunamadı.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock content %}
