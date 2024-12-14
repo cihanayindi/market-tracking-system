@@ -5,5 +5,4 @@ from django.urls import path
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path('islemleri_goruntule/', views.show_transactions, name='islemleri_goruntule'),
 ]
