@@ -59,12 +59,12 @@ class Expenses(models.Model):
     uploaded_at = bu harcamanın eklendiği tarihi belirtir
     """
     id = models.AutoField(primary_key=True)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)  # İlgili ürün
-    receipt = models.ForeignKey(Receipts, on_delete=models.CASCADE)  # İlgili fiş
-    quantity = models.DecimalField(max_digits=10, decimal_places=2)  # Ürün adedi veya kilosu
-    price_per_piece = models.DecimalField(max_digits=10, decimal_places=2)  # Adet veya kilo başı fiyat
-    price = models.DecimalField(max_digits=10, decimal_places=2)  # Toplam fiyat (quantity * price_per_piece)
-    uploaded_at = models.DateTimeField(auto_now_add=True)  # Harcamanın eklendiği tarih
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)  
+    receipt = models.ForeignKey(Receipts, on_delete=models.CASCADE)  
+    quantity = models.DecimalField(max_digits=10, decimal_places=2)  
+    price_per_piece = models.DecimalField(max_digits=10, decimal_places=2)  
+    price = models.DecimalField(max_digits=10, decimal_places=2) 
+    uploaded_at = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
         return f"Harcanan {self.product.name} için {self.quantity} adet / kg"
