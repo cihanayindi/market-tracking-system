@@ -17,7 +17,7 @@ def add_receipt(request):
 
 def show_transactions(request):
     # Fiş ID'si 1 olacak
-    receipt = Receipts.objects.get(id=1)  # Fişi bir kez al
+    receipt = Receipts.objects.get(id=2)  # Fişi bir kez al
     
     # 2. Ürün
     expense2 = Expenses.objects.create(
@@ -56,3 +56,7 @@ def show_transactions(request):
     )
     
     return render(request, "receipts/islemleri_goruntule.html")
+
+def show_receipts(request):
+    receipt_list = Receipts.objects.all()
+    return render(request, "receipts/goruntule.html", {'receipt_list': receipt_list})

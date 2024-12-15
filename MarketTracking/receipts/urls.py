@@ -6,4 +6,5 @@ from django.urls import path
 urlpatterns = [
     path("fis_ekle/", views.add_receipt, name="fis_ekle"),
     path('islemleri_goruntule/', views.show_transactions, name='islemleri_goruntule'),
+    path('goruntule/', views.show_receipts, name="fisleri_goruntule")
 ]

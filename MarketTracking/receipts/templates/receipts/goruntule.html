@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}
+Fişleri Görüntüle
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+<style>
+    /* Genel Stil */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    /* Tablo Stili */
+    table {
+        width: 100%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Sıralanabilir Sütun Stili */
+    th {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s;
+    }
+
+    th:hover {
+        background-color: #0056b3;
+    }
+
+    th a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .sort-icon {
+        font-size: 12px;
+        margin-left: 5px;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+    }
+
+    th:hover .sort-icon {
+        opacity: 1;
+    }
+
+    tr:hover {
+        background-color: #e0e0e0; /* Daha koyu bir gri ton */
+    }
+    
+    /* Tıklanabilir Satırlar */
+    /* tbody tr {
+        cursor: pointer;
+    } */
+
+    /* Pop-up Stili */
+    #popup {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+    }
+
+    #popup img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    #popup .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
+    .preview-icon {
+        width: 100px; /* İkonun genişliği */
+        height: 100px; /* İkonun yüksekliği */
+        cursor: pointer;
+        object-fit: contain; /* Resmin orantılı olarak sığmasını sağlar */
+    }
+
+</style>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Fiş Numarası</th>
+            <th>Fiş Resmini Önizle</th>
+            <th>Eklenme Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for receipt in receipt_list %}
+        <tr>
+            <td>{{ receipt.id }}</td>
+            <td>
+                <img src="../../media/{{receipt.image}}" alt="Fiş Resmi" class="preview-icon" data-image="{{ receipt.image }}">
+            </td> 
+            <td>{{ receipt.uploaded_at|date:"d-m-y H:i"}}</td>
+        </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">Fiş bulunamadı.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pop-up Görüntüleme Alanı -->
+<div id="popup">
+    <span class="close">&times;</span>
+    <img id="popup-image" src="" alt="Fiş Resmi">
+</div>
+
+<script>
+    // Pop-up açma ve kapama işlevselliği
+    const previewIcons = document.querySelectorAll('.preview-icon');
+    const popup = document.getElementById('popup');
+    const popupImage = document.getElementById('popup-image');
+    const closeButton = document.querySelector('.close');
+
+    previewIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const imagePath = "../../media/" + this.getAttribute('data-image');
+            
+            popupImage.src = imagePath;  // Fiş resmini pop-up'ta göster
+            popup.style.display = 'flex'; // Pop-up'ı aç
+        });
+    });
+
+    // Pop-up'ı kapatma
+    closeButton.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    // Pop-up dışına tıklayınca kapama
+    window.addEventListener('click', function(event) {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+</script>
+
+{% endblock content %}
